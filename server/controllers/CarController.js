@@ -4,6 +4,7 @@ import carService from "../services/CarService";
 export default class CarController {
 
 
+
   constructor() {
     this.router = express
       .Router()
@@ -11,8 +12,8 @@ export default class CarController {
       .get("", this.getAll)
       .get("/:id", this.getById)
       .post("", this.create)
-    // .put("/:id", this.edit)
-    // .delete("/:id", this.delete);
+      // .put("/:id", this.edit)
+      .delete("/:id", this.delete);
   }
 
   async getAll(req, res, next) {
@@ -37,6 +38,14 @@ export default class CarController {
       res.status(201).send(data);
     } catch (error) {
       next(error)
+    }
+  }
+  async delete(req, res, next) {
+    try {
+      await carService.delete(req.params.id);
+      res.send("Deleted");
+    } catch (error) {
+      next(error);
     }
   }
 }
