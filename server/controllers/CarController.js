@@ -37,7 +37,7 @@ export default class CarController {
       let data = await carService.create(req.body);
       res.status(201).send(data);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
   async delete(req, res, next) {

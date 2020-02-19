@@ -13,6 +13,9 @@ class CarService {
   async create(rawData) {
     return await _repository.create(rawData);
   }
+  async delete(id) {
+    throw new Error("Method not implemented.");
+  }
 }
 
 const carService = new CarService();
