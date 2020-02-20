@@ -14,7 +14,7 @@ class CarService {
     return await _repository.create(rawData);
   }
   async delete(id) {
-    throw new Error("Method not implemented.");
+    await _repository.findByIdAndDelete(id);
   }
 }
 
